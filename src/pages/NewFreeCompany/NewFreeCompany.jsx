@@ -10,11 +10,9 @@ import CategoryList from '../../components/CategoryList/CategoryList';
 import OrderDetail from '../../components/OrderDetail/OrderDetail';
 import UserLogOut from '../../components/UserLogOut/UserLogOut';
 
-export default function NewOrderPage({ user, setUser }) {
+export default function NewFreeCompany({ user, setUser }) {
 	const [menuItems, setMenuItems] = useState([]);
 	// Add state to track the "active" category
-	const [activeCat, setActiveCat] = useState('');
-	const [cart, setCart] = useState(null);
 
 	// Create and initialize the ref to an empty array
 	const categoriesRef = useRef([]);
