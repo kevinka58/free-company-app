@@ -5,10 +5,11 @@ function NewFreeCompany(props){
     const [formData, setFormData] = useState({
         companyName: '',
         companyTag: 'Ex: FFXIV',
-        serverName: '',
+        serverName: "Adamantoise",
 		companyPop: '0',
 		rank: '0',
-		grandCompany: '',
+		grandCompany: "The Immortal Flames",
+
     });
 
     const formRef = useRef();
@@ -61,7 +62,9 @@ function NewFreeCompany(props){
                 value={formData.serverName}
                 onChange={handleChange}
                 required
-                />
+                >
+				<option value="Exodus">Exodus</option>
+				</select>
             </div>
 			<div className="form-group">
                 <label>Number of Members:</label>
@@ -88,7 +91,9 @@ function NewFreeCompany(props){
                 value={formData.grandCompany}
                 onChange={handleChange}
                 required
-                />
+                >
+				<option value="The Immortal Flames">The Immortal Flames</option>
+				</select>
             </div>
             <button type="submit"
             className="btn"

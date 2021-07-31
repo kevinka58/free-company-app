@@ -1,49 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const freeCompanySchema = new Schema(
-    {
-        companyName: {
-            type: String,
-            required: true,
-        },
-        companyTag: {
-            type: String,
-            required: true,
-            maxLength: 5,
-        },
-        serverName: {
-            type: String,
-            required: true,
-            enum: [
-                "Adamantoise", "Cactuar", "Faerie", "Gilgamesh", "Jenova", "Midgardsormr", "Sargatanas", "Siren",
-                "Balmung", "Brynhildr", "Coeurl", "Diabolos", "Goblin", "Malboro", "Mateus", "Zalera",
-                "Behemoth", "Excalibur", "Exodus", "Famfrit", "Hyperion", "Lamia", "Leviathan", "Ultros",
-            ]
-        },
-        grandCompany: {
-            type: String,
-            required: true,
-            enum: [
-             "The Immortal Flames",
-             "The Maelstrom",
-             "The Order of the Twin Adder"
-            ]
-        },
-        rank: {
-            type: Number,
-            required: true,
-        },
-        companyPop: {
-            type: Number,
-            required: true
-        },
-        comment: [commentSchema],
-    },
-    {
-        timestamps: true
-    })
-
 const commentSchema = new Schema(
     {
         content: {
@@ -72,5 +29,48 @@ const commentSchema = new Schema(
         timestamps: true,
     }
     )
+
+
+const freeCompanySchema = new Schema(
+    {
+        companyName: {
+            type: String,
+            required: true,
+        },
+        companyTag: {
+            type: String,
+            required: true,
+            maxLength: 5,
+        },
+        serverName: {
+            type: String,
+            enum: [
+                "Adamantoise", "Cactuar", "Faerie", "Gilgamesh", "Jenova", "Midgardsormr", "Sargatanas", "Siren",
+                "Balmung", "Brynhildr", "Coeurl", "Diabolos", "Goblin", "Malboro", "Mateus", "Zalera",
+                "Behemoth", "Excalibur", "Exodus", "Famfrit", "Hyperion", "Lamia", "Leviathan", "Ultros",
+            ]
+        },
+        grandCompany: {
+            type: String,
+            enum: [
+             "The Immortal Flames",
+             "The Maelstrom",
+             "The Order of the Twin Adder"
+            ]
+        },
+        rank: {
+            type: Number,
+            required: true,
+        },
+        companyPop: {
+            type: Number,
+            required: true
+        },
+        comment: [commentSchema],
+    },
+    {
+        timestamps: true
+    })
+
 
 module.exports = mongoose.model('FreeCompany', freeCompanySchema);

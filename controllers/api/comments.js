@@ -1,4 +1,4 @@
-const FreeCompany = require('../models/freeCompany')
+const FreeCompany = require('../../models/freeCompany')
 
 module.exports = {
     create,
