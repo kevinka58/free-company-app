@@ -10,7 +10,7 @@ const freeCompanySchema = new Schema(
         companyTag: {
             type: String,
             required: true,
-            maxLength: 3,
+            maxLength: 5,
         },
         serverName: {
             type: String,

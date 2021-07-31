@@ -1,87 +1,105 @@
-import { useState, useEffect, useRef } from 'react';
-import * as itemsAPI from '../../utilities/items-api';
-import * as ordersAPI from '../../utilities/orders-api';
-// Add the component imports
-import './NewOrderPage.css';
-import { Link, useHistory } from 'react-router-dom';
-import Logo from '../../components/Logo/Logo';
-import MenuList from '../../components/MenuList/MenuList';
-import CategoryList from '../../components/CategoryList/CategoryList';
-import OrderDetail from '../../components/OrderDetail/OrderDetail';
-import UserLogOut from '../../components/UserLogOut/UserLogOut';
+import React, {Component, useState, useEffect, useRef } from 'react';
 
-export default function NewFreeCompany({ user, setUser }) {
-	const [menuItems, setMenuItems] = useState([]);
-	// Add state to track the "active" category
+function NewFreeCompany(props){
+    const[invalidForm, setValidForm] = useState(true)
+    const [formData, setFormData] = useState({
+        companyName: '',
+        companyTag: 'Ex: FFXIV',
+        serverName: '',
+		companyPop: '0',
+		rank: '0',
+		grandCompany: '',
+    });
 
-	// Create and initialize the ref to an empty array
-	const categoriesRef = useRef([]);
+    const formRef = useRef();
 
-	// Use history object to change routes programmatically
-	const history = useHistory();
+    useEffect(() => {
+        formRef.current.checkValidity() ? setValidForm(false) : setValidForm(true)
+    });
 
-	useEffect(() => {
-		async function getItems() {
-			const items = await itemsAPI.getAll();
-			categoriesRef.current = items.reduce((cats, item) => {
-				const cat = item.category.name;
-				return cats.includes(cat) ? cats : [...cats, cat];
-			}, []);
-			setMenuItems(items);
-			// Add this line to initialize the active category
-			setActiveCat(items[0].category.name);
-		}
-		getItems();
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        props.handleAddFreeCompany(formData);
+    }
 
-		// Load cart (a cart is the unpaid order for the logged in user)
-		async function getCart() {
-			const cart = await ordersAPI.getCart();
-			setCart(cart);
-		}
-		getCart();
-	}, []);
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        })
+    }
 
-	/*--- Event Handlers --- */
-	async function handleAddToOrder(itemId) {
-		const cart = await ordersAPI.addItemToCart(itemId);
-		setCart(cart);
-	}
 
-	async function handleChangeQty(itemId, newQty) {
-		const cart = await ordersAPI.setItemQtyInCart(itemId, newQty);
-		setCart(cart);
-	}
+    return(
+        <>
+        <h1>Add your Free Company Listing</h1>
+        <form ref={formRef} onSubmit={handleSubmit}>
+            <div className="form-group">
+                <label>Free Company's Name:</label>
+                <input 
+                className="form-control"
+                name="companyName"
+                value={formData.companyName}
+                onChange={handleChange}
+                required
+                />
+            </div>
+            <div className="form-group">
+                <label>Company Tag:</label>
+                <input className="form-control"
+                name="companyTag"
+                value={formData.companyTag}
+                onChange={handleChange}
+                required
+                />
+            </div>
+            <div className="form-group">
+                <label>Server Name:</label>
+                <select
+                className="form-control"
+                name="serverName"
+                value={formData.serverName}
+                onChange={handleChange}
+                required
+                />
+            </div>
+			<div className="form-group">
+                <label>Number of Members:</label>
+                <input className="form-control"
+                name="companyPop"
+                value={formData.companyPop}
+                onChange={handleChange}
+                required
+                />
+            </div>
+			<div className="form-group">
+                <label>Company Rank:</label>
+                <input className="form-control"
+                name="rank"
+                value={formData.rank}
+                onChange={handleChange}
+                required
+                />
+            </div>
+			<div className="form-group">
+                <label>Grand Company:</label>
+                <select className="form-control"
+                name="grandCompany"
+                value={formData.grandCompany}
+                onChange={handleChange}
+                required
+                />
+            </div>
+            <button type="submit"
+            className="btn"
+            disabled={invalidForm}
+            >
+            ADD FREE COMPANY
+            </button>
+        </form> 
+        </>
+        )  
 
-	async function handleCheckout() {
-		await ordersAPI.checkout();
-		history.push('/orders');
-	}
-
-	return (
-		<main className='NewOrderPage'>
-			<aside>
-				<Logo />
-				<CategoryList
-					categories={categoriesRef.current}
-					activeCat={activeCat}
-					setActiveCat={setActiveCat}
-				/>
-				<Link to='/orders' className='button btn-sm'>
-					PREVIOUS ORDERS
-				</Link>
-				<UserLogOut user={user} setUser={setUser} />
-			</aside>
-			<MenuList
-				menuItems={menuItems.filter(
-					item => item.category.name === activeCat
-				)}
-				handleAddToOrder={handleAddToOrder}
-			/>
-			<OrderDetail
-				order={cart}
-				handleChangeQty={handleChangeQty}
-				handleCheckout={handleCheckout}
-			/>
-		</main>
-	);
 }
+
+export default NewFreeCompany;
