@@ -1,24 +1,18 @@
-import * as usersService from '../../utilities/users-service';
-import PuppyList from '../PuppyList/PuppyList'
+import FreeCompanyListing from '../../components/FreeCompanyListing/FreeCompanyListing'
+import React from 'react'
 
-function Puppies({ puppies, handleDeletePuppy}){
-
-    async function handleCheckToken(){
-        const expDate = await usersService.checkToken()
-        console.log(expDate);
-    }
+export default function FreeCompanyListingPage(props) {
     return (
-    <>
-    <h1>Puppies</h1>  
-    <div>
-        <PuppyList puppies={puppies}/>
-    </div>
-    <button onClick={handleCheckToken}>
-        Check When My Login Expires
-    </button>
-    </>
+        <>
+        <h1>Free Company Listing</h1>  
+        <div>
+            {props.freeCompanies.map(freeCompany => (
+                <FreeCompanyListing freeCompany={freeCompany} 
+                key={freeCompany._id}
+                handleDeleteFreeCompany={props.handleDeleteFreeCompany}
+                 />
+            ))}
+            </div>   
+            </>   
     )
-
 }
-
-export default Puppies;

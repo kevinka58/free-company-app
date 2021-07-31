@@ -14,7 +14,7 @@ export default function FreeCompanyListing({ freeCompany, handleDeleteFreeCompan
                 to={
                     {
                         pathname: '/details',
-                        state: {grandCompany}
+                        state: { freeCompany }
                     }
                 }
                 >
@@ -24,14 +24,14 @@ export default function FreeCompanyListing({ freeCompany, handleDeleteFreeCompan
 					className='btn btn-xs btn-warning'
 					to={{
 						pathname: '/edit',
-						state: { grandCompany },
+						state: { freeCompany },
 					}}
 				>
 					EDIT
 				</Link>
 				<button
 					className='btn btn-xs btn-danger margin-left-10'
-					onClick={() => handleDeleteGrandCompany(grandCompany._id)}
+					onClick={() => handleDeleteFreeCompany(freeCompany._id)}
 				>
 					DELETE
 				</button>
