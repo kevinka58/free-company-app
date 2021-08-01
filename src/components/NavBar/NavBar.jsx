@@ -8,6 +8,8 @@ function NavBar({user, setUser}) {
 	}
 
     return ( <nav>
+        <Link to="/freeCompanies">Home</Link>
+        &nbsp; | &nbsp;
         <Link to="/freeCompanies/listing">Free Company</Link>
         &nbsp; | &nbsp;
         <Link to="/freeCompanies/new">Add Your Free Company</Link>

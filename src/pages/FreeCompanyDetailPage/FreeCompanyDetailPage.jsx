@@ -94,7 +94,7 @@ function FreeCompanyDetailPage(props) {
             >
             ADD APPLICATION
             </button>
-        </form>  
+        </form>   
         </>
 	);
 }
