@@ -8,7 +8,7 @@ import HomePage from '../HomePage/HomePage';
 import NavBar from '../../components/NavBar/NavBar'
 import FreeCompanyListingPage from '../../pages/FreeCompanyListingPage/FreeCompanyListingPage';
 import * as freeCompanyAPI from '../../utilities/freeCompanies-api'
-
+import FreeCompanyDetailPage from '../../pages/FreeCompanyDetailPage/FreeCompanyDetailPage'
 export default function App() {
 	const [user, setUser] = useState(getUser());
 	const [freeCompanies, setFreeCompanies] = useState([])
@@ -45,12 +45,15 @@ export default function App() {
 				<NavBar user={user} setUser={setUser} />
 					<Switch>
 						<HomePage exact path ="/freeCompanies"/>
+						<Route path='/freeCompanies/new'>
+							<NewFreeCompany handleAddFreeCompany={handleAddFreeCompany}/>
+						</Route>
 						<Route exact path="/freeCompanies/listing">
 							<FreeCompanyListingPage freeCompanies={freeCompanies}
 							handleDeleteFreeCompany={handleDeleteFreeCompany}/>
 						</Route>
-						<Route path='/freeCompanies/new'>
-							<NewFreeCompany handleAddFreeCompany={handleAddFreeCompany}/>
+						<Route exact path="/details">
+							<FreeCompanyDetailPage />
 						</Route>
 						{/* <Route path='/orders'>
 							<OrderHistoryPage />
