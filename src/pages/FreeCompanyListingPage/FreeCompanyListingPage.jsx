@@ -1,7 +1,8 @@
 import FreeCompanyListing from '../../components/FreeCompanyListing/FreeCompanyListing'
-import React from 'react'
+import React from 'react';
 
 export default function FreeCompanyListingPage(props) {
+
     return (
         <>
         <h1>Free Company Listing</h1>  
@@ -11,8 +12,11 @@ export default function FreeCompanyListingPage(props) {
                 key={freeCompany._id}
                 handleDeleteFreeCompany={props.handleDeleteFreeCompany}
                  />
-            ))}
+                 ))}
+            
             </div>   
             </>   
+
+
     )
 }

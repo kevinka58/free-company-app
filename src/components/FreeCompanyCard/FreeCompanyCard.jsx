@@ -14,7 +14,7 @@ function FreeCompanyCard({ freeCompany }) {
             <div># OF MEMBERS: {freeCompany.companyPop}</div>
             <div>RANK: {freeCompany.rank}</div>
             <div>GRAND COMPANY: {freeCompany.grandCompany}</div>
-            <div><em>{freeCompany.companyMotto}</em></div>
+            <div><em>"{freeCompany.companyMotto}"</em></div>
 				{/* <dl>
 					<dt>Company Tag:</dt>
 					<dd>{freeCompany.companyTag}</dd>
