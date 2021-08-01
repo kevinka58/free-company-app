@@ -8,7 +8,14 @@ function FreeCompanyCard({ freeCompany }) {
 				<h3 className='panel-title'>{freeCompany.companyName}</h3>
 			</div>
 			<div className='panel-body'>
-				<dl>
+            <div>FREE COMPANY NAME: {freeCompany.companyName}</div> 
+            <div>Company Tag: -{freeCompany.companyTag}-</div>
+            <div>SERVER NAME: {freeCompany.serverName}</div>
+            <div># OF MEMBERS: {freeCompany.companyPop}</div>
+            <div>RANK: {freeCompany.rank}</div>
+            <div>GRAND COMPANY: {freeCompany.grandCompany}</div>
+            <div><em>{freeCompany.companyMotto}</em></div>
+				{/* <dl>
 					<dt>Company Tag:</dt>
 					<dd>{freeCompany.companyTag}</dd>
 					<dt>SERVER NAME:</dt>
@@ -19,10 +26,10 @@ function FreeCompanyCard({ freeCompany }) {
 					<dd>{freeCompany.rank}</dd>
 					<dt>Grand Company:</dt>
 					<dd>{freeCompany.grandCompany}</dd>
-				</dl>
+				</dl> */}
 			</div>
 			<div className='panel-footer'>
-				<Link to='/listing'>RETURN TO LIST</Link>
+				<Link to='freeCompanies/listing'>RETURN TO LIST</Link>
 			</div>
 		</div>
 	);

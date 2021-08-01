@@ -7,9 +7,10 @@ export default function FreeCompanyListing({ freeCompany, handleDeleteFreeCompan
             <div>FREE COMPANY NAME: {freeCompany.companyName}</div> 
             <div>Company Tag: -{freeCompany.companyTag}-</div>
             <div>SERVER NAME: {freeCompany.serverName}</div>
-            <div># OF MEMMBERS{freeCompany.companyPop}</div>
+            <div># OF MEMBERS: {freeCompany.companyPop}</div>
             <div>RANK: {freeCompany.rank}</div>
             <div>GRAND COMPANY: {freeCompany.grandCompany}</div>
+            <div><em>"{freeCompany.companyMotto}"</em></div>
                 <Link className='btn btn-xs btn-info'
                 to={
                     {
@@ -18,8 +19,9 @@ export default function FreeCompanyListing({ freeCompany, handleDeleteFreeCompan
                     }
                 }
                 >
-                    DETAILS 
+                    APPLY
                 </Link>
+                &nbsp; | &nbsp;
                 <Link
 					className='btn btn-xs btn-warning'
 					to={{
@@ -29,6 +31,7 @@ export default function FreeCompanyListing({ freeCompany, handleDeleteFreeCompan
 				>
 					EDIT
 				</Link>
+                &nbsp; | &nbsp;
 				<button
 					className='btn btn-xs btn-danger margin-left-10'
 					onClick={() => handleDeleteFreeCompany(freeCompany._id)}

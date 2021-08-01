@@ -94,10 +94,19 @@ function EditFreeCompany(props){
             className="btn"
             disabled={invalidForm}
             >
+            <div className="form-group">
+            <label>Company Motto</label>
+            <input className="form-control"
+            name="companyMotto"
+            value={formData.companyMotto}
+            onChange={handleChange}
+            required
+                />
+            </div>
             UPDATE FREE COMPANY
             </button>
             &nbsp;&nbsp;
-            <Link to='/listing'>CANCEL</Link>
+            <Link to='freeCompanies/listing'>CANCEL</Link>
         </form> 
         </>
         )  

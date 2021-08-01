@@ -66,6 +66,10 @@ const freeCompanySchema = new Schema(
             type: Number,
             required: true
         },
+        companyMotto: {
+            type: String,
+            maxLength: 200,
+        },
         comment: [commentSchema],
     },
     {

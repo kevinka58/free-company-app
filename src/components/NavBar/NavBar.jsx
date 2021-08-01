@@ -13,6 +13,10 @@ function NavBar({user, setUser}) {
         <Link to="/freeCompanies/new">Add Your Free Company</Link>
         &nbsp; | &nbsp;
         <Link to="" onClick={handleLogOut}>Log Out</Link>
+        &nbsp; | &nbsp; 
+        <span>
+            <b>Welcome, {user.name}</b>
+        </span>
     </nav>
     )
 }

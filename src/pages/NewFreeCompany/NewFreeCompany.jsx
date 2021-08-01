@@ -9,7 +9,7 @@ function NewFreeCompany(props){
 		companyPop: '0',
 		rank: '0',
 		grandCompany: "The Immortal Flames",
-
+		companyMotto: '',
     });
 
     const formRef = useRef();
@@ -120,7 +120,16 @@ function NewFreeCompany(props){
 				<option value="The Maelstrom">The Maelstrom</option>
 				<option value="The Order of the Twin Adder">The Order of the Twin Adder</option>
 				</select>
-            </div>
+				</div>
+			<div className="form-group">
+				<label>Company Motto: </label>
+				<input className="form-control"
+				name="companyMotto"
+				value={formData.companyMotto}
+				onChange={handleChange}
+				required
+					/>
+			</div>
             <button type="submit"
             className="btn"
             disabled={invalidForm}
