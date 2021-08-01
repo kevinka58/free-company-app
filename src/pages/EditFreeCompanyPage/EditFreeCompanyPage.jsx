@@ -1,16 +1,11 @@
 import React, {Component, useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom'
 
-function NewFreeCompany(props){
+function EditFreeCompany(props){
+    const location = useLocation();
+
     const[invalidForm, setValidForm] = useState(true)
-    const [formData, setFormData] = useState({
-        companyName: '',
-        companyTag: 'Ex: FFXIV',
-        serverName: "Adamantoise",
-		companyPop: '0',
-		rank: '0',
-		grandCompany: "The Immortal Flames",
-
-    });
+    const [formData, setFormData] = useState(location.state.freeCompany);
 
     const formRef = useRef();
 
@@ -20,7 +15,7 @@ function NewFreeCompany(props){
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        props.handleAddFreeCompany(formData);
+        props.handleUpdateFreeCompany(formData);
     }
 
     const handleChange = (e) => {
@@ -33,7 +28,7 @@ function NewFreeCompany(props){
 
     return(
         <>
-        <h1>Add your Free Company Listing</h1>
+        <h1>Edit your listing</h1>
         <form ref={formRef} onSubmit={handleSubmit}>
             <div className="form-group">
                 <label>Free Company's Name:</label>
@@ -64,30 +59,6 @@ function NewFreeCompany(props){
                 required
                 >
 				<option value="Exodus">Exodus</option>
-				<option value="Adamantoise">Adamantoise</option>
-				<option value="Cactuar">Cactuar</option>
-				<option value="Faerie">Faerie</option>
-				<option value="Gilgamesh">Gilgamesh</option>
-				<option value="Jenova">Jenova</option>
-				<option value="Midgardsormr">Midgardsormr</option>
-				<option value="Sargatanas">Sargatanas</option>
-				<option value="Siren">Siren</option>
-				<option value="Balmung">Balmung</option>
-				<option value="Brynhildr">Brynhildr</option>
-				<option value="Coeurl">Coeurl</option>
-				<option value="Diabolos">Diabolos</option>
-				<option value="Goblin">Goblin</option>
-				<option value="Malboro">Malboro</option>
-				<option value="Mateus">Mateus</option>
-				<option value="Zalera">Zalera</option>
-				<option value="Behemoth">Behemoth</option>
-				<option value="Excalibur">Excalibur</option>
-				<option value="Exodus">Exodus</option>
-				<option value="Famfrit">Famfrit</option>
-				<option value="Hyperion">Hyperion</option>
-				<option value="Lamia">Lamia</option>
-				<option value="Leviathan">Leviathan</option>
-				<option value="Ultros">Ultros</option>
 				</select>
             </div>
 			<div className="form-group">
@@ -117,20 +88,20 @@ function NewFreeCompany(props){
                 required
                 >
 				<option value="The Immortal Flames">The Immortal Flames</option>
-				<option value="The Maelstrom">The Maelstrom</option>
-				<option value="The Order of the Twin Adder">The Order of the Twin Adder</option>
 				</select>
             </div>
             <button type="submit"
             className="btn"
             disabled={invalidForm}
             >
-            ADD FREE COMPANY
+            UPDATE FREE COMPANY
             </button>
+            &nbsp;&nbsp;
+            <Link to='/listing'>CANCEL</Link>
         </form> 
         </>
         )  
 
 }
 
-export default NewFreeCompany;
+export default EditFreeCompany;

@@ -9,6 +9,8 @@ import NavBar from '../../components/NavBar/NavBar'
 import FreeCompanyListingPage from '../../pages/FreeCompanyListingPage/FreeCompanyListingPage';
 import * as freeCompanyAPI from '../../utilities/freeCompanies-api'
 import FreeCompanyDetailPage from '../../pages/FreeCompanyDetailPage/FreeCompanyDetailPage'
+import EditFreeCompany from '../../pages/EditFreeCompanyPage/EditFreeCompanyPage';
+
 export default function App() {
 	const [user, setUser] = useState(getUser());
 	const [freeCompanies, setFreeCompanies] = useState([])
@@ -37,6 +39,13 @@ export default function App() {
 		setFreeCompanies(freeCompanies.filter(freeCompany => freeCompany._id !== id));
 	}
 
+	async function handleUpdateFreeCompany (updatedFreeCompanyData){
+		const updatedFreeCompany = await freeCompanyAPI.update(updatedFreeCompanyData)
+		const newFreeCompaniesArray = freeCompanies.map(f =>
+		   f._id === updatedFreeCompany._id ? updatedFreeCompany : f
+		   )
+		   setFreeCompanies(newFreeCompaniesArray);
+	}
 
 	return (
 		<main className='App'>
@@ -55,9 +64,9 @@ export default function App() {
 						<Route exact path="/details">
 							<FreeCompanyDetailPage />
 						</Route>
-						{/* <Route path='/orders'>
-							<OrderHistoryPage />
-						</Route> */}
+						<Route exact path="/edit">
+							<EditFreeCompany handleUpdateFreeCompany={handleUpdateFreeCompany}/>
+						</Route>
 						<Redirect to='/freeCompanies' />
 					</Switch>
 				</>
