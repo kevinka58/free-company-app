@@ -1,7 +1,6 @@
 import React, {Component, useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import FreeCompanyCard from '../../components/FreeCompanyCard/FreeCompanyCard';
-import FreeCompanyApplication from '../../components/FreeCompanyApplication/FreeCompanyApplication'
 
 function FreeCompanyDetailPage(props) {
 
@@ -39,10 +38,12 @@ function FreeCompanyDetailPage(props) {
 		<>
 			<h1>Free Company Details</h1>
 			<FreeCompanyCard freeCompany={freeCompany} key={freeCompany._id} />
-            <div>
-			<FreeCompanyApplication comments={props.comments} key={props.comments._id} />
-            </div>
-            
+            <div className="FreeCompanyListing">
+            <div>Character Name: {props.comments.characterName}</div> 
+            <div>Character Level: {props.comments.charLevel}</div>
+            <div>Preffered Role: {props.comments.prefRole}</div>
+            <div>About You: {props.comments.content}</div>
+			</div>
             <h1>Apply Here!</h1>
             <form ref={formRef} onSubmit={handleSubmit}>
             <div className="form-group">
@@ -93,8 +94,8 @@ function FreeCompanyDetailPage(props) {
             >
             ADD APPLICATION
             </button>
-        </form> 
-		</>
+        </form>  
+        </>
 	);
 }
 

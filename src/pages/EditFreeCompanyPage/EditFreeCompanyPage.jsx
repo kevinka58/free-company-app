@@ -90,10 +90,6 @@ function EditFreeCompany(props){
 				<option value="The Immortal Flames">The Immortal Flames</option>
 				</select>
             </div>
-            <button type="submit"
-            className="btn"
-            disabled={invalidForm}
-            >
             <div className="form-group">
             <label>Company Motto</label>
             <input className="form-control"
@@ -103,6 +99,10 @@ function EditFreeCompany(props){
             required
                 />
             </div>
+            <button type="submit"
+            className="btn"
+            disabled={invalidForm}
+            >
             UPDATE FREE COMPANY
             </button>
             &nbsp;&nbsp;

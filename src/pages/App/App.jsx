@@ -11,8 +11,6 @@ import * as freeCompanyAPI from '../../utilities/freeCompanies-api'
 import * as commentAPI from '../../utilities/comments-api'
 import FreeCompanyDetailPage from '../../pages/FreeCompanyDetailPage/FreeCompanyDetailPage'
 import EditFreeCompany from '../../pages/EditFreeCompanyPage/EditFreeCompanyPage';
-import FreeCompanyApplication from '../../components/FreeCompanyApplication/FreeCompanyApplication'
-import FreeCompanyCard from '../../components/FreeCompanyCard/FreeCompanyCard';
 
 export default function App() {
 	const [user, setUser] = useState(getUser());
@@ -64,11 +62,7 @@ export default function App() {
 		<main className='App'>
 			{user ? (
 				<>
-				<FreeCompanyCard
-				freeCompanies={freeCompanies} />
-				<FreeCompanyApplication 
-				comments={comments}
-				handleDeleteComment={handleDeleteComment} />
+
 				<NavBar user={user} setUser={setUser} />
 					<Switch>
 						<HomePage exact path ="/freeCompanies"/>
@@ -82,7 +76,9 @@ export default function App() {
 							 />
 						</Route>
 						<Route exact path="/details">
-							<FreeCompanyDetailPage handleAddComment={handleAddComment}/>
+							<FreeCompanyDetailPage 
+							comments={comments}
+							handleAddComment={handleAddComment}/>
 						</Route>
 						<Route exact path="/edit">
 							<EditFreeCompany handleUpdateFreeCompany={handleUpdateFreeCompany}/>
