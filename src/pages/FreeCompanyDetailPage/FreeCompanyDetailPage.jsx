@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 import FreeCompanyCard from '../../components/FreeCompanyCard/FreeCompanyCard';
 
 function FreeCompanyDetailPage(props) {
-
     const [invalidForm, setValidForm] = useState(true)
     const [formData, setFormData] = useState({
         content: '',
@@ -20,7 +19,9 @@ function FreeCompanyDetailPage(props) {
     
     const handleSubmit = (e) => {
         e.preventDefault()
-        props.handleAddComment(formData);
+        console.log('form:', formData)
+        console.log('INSIDE HANDLE SUBMIT FUNCTION')
+        props.handleAddComment(formData, freeCompany._id);
     }
     
     const handleChange = (e) => {
@@ -39,10 +40,21 @@ function FreeCompanyDetailPage(props) {
 			<h1>Free Company Details</h1>
 			<FreeCompanyCard freeCompany={freeCompany} key={freeCompany._id} />
             <div className="FreeCompanyListing">
-            <div>Character Name: {props.comments.characterName}</div> 
-            <div>Character Level: {props.comments.charLevel}</div>
-            <div>Preffered Role: {props.comments.prefRole}</div>
-            <div>About You: {props.comments.content}</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Applications</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>Character Name: {freeCompany.comments.map(comments => <div>{comments.characterName}</div>)}</td>
+                    <td>Character Level: {freeCompany.comments.map(comments => <div>{comments.charLevel}</div>)}</td> 
+                    <td>Prefered Role: {freeCompany.comments.map(comments => <div>{comments.prefRole}</div>)}</td> 
+                    <td>About You!: {freeCompany.comments.map(comments => <div>{comments.content}</div>)}</td> 
+                </tr>
+                </tbody>
+            </table>
 			</div>
             <h1>Apply Here!</h1>
             <form ref={formRef} onSubmit={handleSubmit}>

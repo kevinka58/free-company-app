@@ -28,12 +28,13 @@ async function sendRequest(url, method = 'GET', payload = null) {
 	throw new Error('Bad Request');
 }
 
-export function create(pup) {
-return sendRequest(BASE_URL,'POST', pup);
+export function create(freeCompany) {
+return sendRequest(BASE_URL,'POST', freeCompany);
 }
 
-export function update(updatedPuppy){
-	return sendRequest(`${BASE_URL}/${updatedPuppy._id}`, 'PUT', updatedPuppy)
+
+export function update(updatedFreeCompany){
+	return sendRequest(`${BASE_URL}/${updatedFreeCompany._id}`, 'PUT', updatedFreeCompany)
 }
 
 export function deleteOne(id){

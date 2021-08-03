@@ -20,6 +20,8 @@ function NewFreeCompany(props){
 
     const handleSubmit = (e) => {
         e.preventDefault()
+		console.log('form:', formData)
+        console.log('INSIDE HANDLE SUBMIT FUNCTION')
         props.handleAddFreeCompany(formData);
     }
 

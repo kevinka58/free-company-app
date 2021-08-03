@@ -1,6 +1,6 @@
 import { getToken } from './users-service';
 
-const BASE_URL = '/api/comments';
+const BASE_URL = '/api';
 
 export function getAll() {
 	return sendRequest(BASE_URL);
@@ -10,6 +10,18 @@ export function getById(id) {
 	return sendRequest(`${BASE_URL}/${id}`);
 }
 
+export function create(newCommentData, freeCompanyId){
+	return sendRequest(`${BASE_URL}/freeCompanies/${freeCompanyId}/comments`, 'POST', newCommentData)
+	
+}
+
+export function update(updatedPuppy){
+	return sendRequest(`${BASE_URL}/${updatedPuppy._id}`, 'PUT', updatedPuppy)
+}
+
+export function deleteOne(id){
+	return sendRequest(`${BASE_URL}/${id}`, 'DELETE')
+}
 
 async function sendRequest(url, method = 'GET', payload = null) {
 	const options = { method };
@@ -26,16 +38,4 @@ async function sendRequest(url, method = 'GET', payload = null) {
 	const res = await fetch(url, options);
 	if (res.ok) return res.json();
 	throw new Error('Bad Request');
-}
-
-export function create(pup) {
-return sendRequest(BASE_URL,'POST', pup);
-}
-
-export function update(updatedPuppy){
-	return sendRequest(`${BASE_URL}/${updatedPuppy._id}`, 'PUT', updatedPuppy)
-}
-
-export function deleteOne(id){
-	return sendRequest(`${BASE_URL}/${id}`, 'DELETE')
 }

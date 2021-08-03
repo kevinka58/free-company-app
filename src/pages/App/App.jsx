@@ -25,13 +25,14 @@ export default function App() {
 		}
 		getFreeCompanies();
 	}, []);
+	
 
 	useEffect(() => {
-		history.push('/listing');
+		history.push('/');
 	}, [freeCompanies, history]);
 	
-	async function handleAddComment (newCommentData){
-		const newComment = await commentAPI.create(newCommentData);
+	async function handleAddComment (newCommentData, freeCompanyId){
+		const newComment = await commentAPI.create(newCommentData, freeCompanyId);
 		setComments([...comments, newComment])
 	  }
 

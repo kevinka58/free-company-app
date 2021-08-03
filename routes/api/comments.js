@@ -3,7 +3,7 @@ const router = express.Router();
 const commentsCtrl = require('../../controllers/api/comments');
 
 router.post('/freeCompanies/:id/comments', commentsCtrl.create);
-router.delete('/freeCompanies/:id/:index', commentsCtrl.delete);
-router.put('/freeCompanies/:id/:index', commentsCtrl.update);
+router.delete('/comments/:id', commentsCtrl.delete);
+router.put('/comments/:id', commentsCtrl.update);
 
 module.exports = router;

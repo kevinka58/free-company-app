@@ -14,6 +14,8 @@ const commentSchema = new Schema(
         charLevel: {
             type: Number,
             required: true,
+            min: 1,
+            max: 80,
         },
         prefRole: {
             type: String,
@@ -70,7 +72,7 @@ const freeCompanySchema = new Schema(
             type: String,
             maxLength: 200,
         },
-        comment: [commentSchema],
+        comments: [commentSchema],
     },
     {
         timestamps: true
