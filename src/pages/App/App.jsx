@@ -65,8 +65,10 @@ export default function App() {
 				<>
 				<NavBar user={user} setUser={setUser} />
 					<Switch>
-						<HomePage exact path ="/freeCompanies"/>
-						<Route path='/freeCompanies/new'>
+						<Route exact path ="/freeCompanies">
+						<HomePage />
+						</Route>
+						<Route exact path='/freeCompanies/new'>
 							<NewFreeCompany handleAddFreeCompany={handleAddFreeCompany}/>
 						</Route>
 						<Route exact path="/freeCompanies/listing">
@@ -77,6 +79,7 @@ export default function App() {
 						</Route>
 						<Route exact path="/details">
 							<FreeCompanyDetailPage 
+							handleDeleteComment={handleDeleteComment}
 							comments={comments}
 							handleAddComment={handleAddComment}/>
 						</Route>

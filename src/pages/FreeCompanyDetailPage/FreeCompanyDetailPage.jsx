@@ -40,22 +40,28 @@ function FreeCompanyDetailPage(props) {
 			<h1>Free Company Details</h1>
 			<FreeCompanyCard freeCompany={freeCompany} key={freeCompany._id} />
             <div className="FreeCompanyListing">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Applications</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <td>Character Name: {freeCompany.comments.map(comments => <div>{comments.characterName}</div>)}</td>
-                    <td>Character Level: {freeCompany.comments.map(comments => <div>{comments.charLevel}</div>)}</td> 
-                    <td>Prefered Role: {freeCompany.comments.map(comments => <div>{comments.prefRole}</div>)}</td> 
-                    <td>About You!: {freeCompany.comments.map(comments => <div>{comments.content}</div>)}</td> 
-                </tr>
-                </tbody>
-            </table>
-			</div>
+                </div>
+                <table id="comment-section" class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th>Applications</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>{freeCompany.comments.map(c => (
+                            <td key={c.id}>Character Name: {c.characterName} | Character Level: {c.charLevel} | Prefered Role: {c.prefRole} | About You!: {c.content} </td>
+                            ))} 
+                            <td>
+                                <button>DELETE</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            {/* <ol>{freeCompany.comments.map(c => (
+            <li key={c.id}>Character Name: {c.characterName} | Character Level: {c.charLevel} | Prefered Role: {c.prefRole} | About You!: {c.content}</li>
+            ))} 
+            </ol> */}
+           
             <h1>Apply Here!</h1>
             <form ref={formRef} onSubmit={handleSubmit}>
             <div className="form-group">

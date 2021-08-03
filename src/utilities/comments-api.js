@@ -20,7 +20,7 @@ export function update(updatedPuppy){
 }
 
 export function deleteOne(id){
-	return sendRequest(`${BASE_URL}/${id}`, 'DELETE')
+	return sendRequest(`/comments/${id}`, 'DELETE')
 }
 
 async function sendRequest(url, method = 'GET', payload = null) {
