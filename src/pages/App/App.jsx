@@ -46,9 +46,9 @@ export default function App() {
 		setFreeCompanies(freeCompanies.filter(freeCompany => freeCompany._id !== id));
 	}
 	
-	async function handleDeleteComment(id) {
-		await commentAPI.deleteComment(id);
-		setComments(comments.filter(comment => comment._id !== id));
+	async function handleDeleteComment(freeCompanyId, commentId) {
+		await commentAPI.deleteComment(freeCompanyId, commentId);
+		setComments(comments.filter(comment => comment._id !== commentId));
 	}
 
 	async function handleUpdateFreeCompany (updatedFreeCompanyData){

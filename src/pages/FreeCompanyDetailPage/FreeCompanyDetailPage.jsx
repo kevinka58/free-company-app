@@ -32,7 +32,7 @@ function FreeCompanyDetailPage(props) {
     }
 
     const {
-		state: { freeCompany },
+		state: { freeCompany, comment },
 	} = useLocation();
 
 	return (
@@ -49,7 +49,7 @@ function FreeCompanyDetailPage(props) {
                     </thead>
                     <tbody>
                         <tr>{freeCompany.comments.map((c, index) => (
-                            <td key={index}><strong>Character Name: </strong>{c.characterName} | <strong>Character Level: </strong>{c.charLevel} | <strong>Prefered Role: </strong>{c.prefRole} | <strong>About You!: </strong>{c.content} <button onClick={() => props.handleDeleteComment()} >DELETE</button></td>
+                            <td key={index}><strong>Character Name: </strong>{c.characterName} | <strong>Character Level: </strong>{c.charLevel} | <strong>Prefered Role: </strong>{c.prefRole} | <strong>About You!: </strong>{c.content} <button onClick={() => props.handleDeleteComment(freeCompany._id, c._id)} >DELETE</button></td>
                             ))} 
                         </tr>
                     </tbody>
