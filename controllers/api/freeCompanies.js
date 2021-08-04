@@ -10,12 +10,13 @@ module.exports = {
 
 async function index(req, res) {
 	const freeCompanies = await FreeCompany.find({});
+	console.log(freeCompanies)
 	res.status(200).json(freeCompanies);
 }
 
 async function show(req, res) {
 	const freeCompany = await FreeCompany.findById(req.params.id);
-	res.json(freeCompany);
+	res.status(200).json(freeCompany);
 }
 
 async function create(req, res){

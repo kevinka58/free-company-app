@@ -19,8 +19,8 @@ export function update(updatedPuppy){
 	return sendRequest(`${BASE_URL}/${updatedPuppy._id}`, 'PUT', updatedPuppy)
 }
 
-export function deleteOne(id){
-	return sendRequest(`/comments/${id}`, 'DELETE')
+export function deleteComment(freeCompanyId){
+	return sendRequest(`${BASE_URL}/comments/${freeCompanyId}`, 'DELETE', freeCompanyId)
 }
 
 async function sendRequest(url, method = 'GET', payload = null) {

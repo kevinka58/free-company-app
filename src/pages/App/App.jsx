@@ -47,7 +47,7 @@ export default function App() {
 	}
 	
 	async function handleDeleteComment(id) {
-		await commentAPI.deleteOne(id);
+		await commentAPI.deleteComment(id);
 		setComments(comments.filter(comment => comment._id !== id));
 	}
 
@@ -65,7 +65,7 @@ export default function App() {
 				<>
 				<NavBar user={user} setUser={setUser} />
 					<Switch>
-						<Route exact path ="/freeCompanies">
+						<Route exact path="/freeCompanies">
 						<HomePage />
 						</Route>
 						<Route exact path='/freeCompanies/new'>

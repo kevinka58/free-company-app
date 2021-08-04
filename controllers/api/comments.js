@@ -27,7 +27,7 @@ async function update(req, res) {
 
 async function deleteComment(req, res) {
   const freeCompany = await FreeCompany.findById(req.params.id);
-  freeCompany.comments.splice(req.params.index, 1)
+  const comment = await freeCompany.comments.remove(req.params.commentId)
   await freeCompany.save()
-  res.status(200).json(freeCompany.comments);
+  res.status(200).json(freeCompany);
 }

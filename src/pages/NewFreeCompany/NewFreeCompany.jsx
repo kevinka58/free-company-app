@@ -16,7 +16,7 @@ function NewFreeCompany(props){
 
     useEffect(() => {
         formRef.current.checkValidity() ? setValidForm(false) : setValidForm(true)
-    });
+    },);
 
     const handleSubmit = (e) => {
         e.preventDefault()

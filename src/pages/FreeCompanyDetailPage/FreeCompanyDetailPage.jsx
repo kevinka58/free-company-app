@@ -48,19 +48,12 @@ function FreeCompanyDetailPage(props) {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>{freeCompany.comments.map(c => (
-                            <td key={c.id}>Character Name: {c.characterName} | Character Level: {c.charLevel} | Prefered Role: {c.prefRole} | About You!: {c.content} </td>
+                        <tr>{freeCompany.comments.map((c, index) => (
+                            <td key={index}><strong>Character Name: </strong>{c.characterName} | <strong>Character Level: </strong>{c.charLevel} | <strong>Prefered Role: </strong>{c.prefRole} | <strong>About You!: </strong>{c.content} <button onClick={() => props.handleDeleteComment()} >DELETE</button></td>
                             ))} 
-                            <td>
-                                <button>DELETE</button>
-                            </td>
                         </tr>
                     </tbody>
                 </table>
-            {/* <ol>{freeCompany.comments.map(c => (
-            <li key={c.id}>Character Name: {c.characterName} | Character Level: {c.charLevel} | Prefered Role: {c.prefRole} | About You!: {c.content}</li>
-            ))} 
-            </ol> */}
            
             <h1>Apply Here!</h1>
             <form ref={formRef} onSubmit={handleSubmit}>

@@ -27,7 +27,7 @@ app.use("/api/users", require("./routes/api/users"));
 
 // Protect the api routes below from anonymous users
 const ensureLoggedIn = require("./config/ensureLoggedIn");
-app.use("/api/freeCompanies", ensureLoggedIn, require("./routes/api/freeCompanies")
+app.use("/api/freeCompanies", require("./routes/api/freeCompanies")
 );
 app.use("/api", ensureLoggedIn, require("./routes/api/comments"));
 
