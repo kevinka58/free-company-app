@@ -41,9 +41,7 @@ function FreeCompanyDetailPage(props) {
 			<FreeCompanyCard freeCompany={freeCompany} key={freeCompany._id} />
             <div className="FreeCompanyListing">
                 </div>
-                    <div>
-                    <div>
-                    <div></div>
+
                         <div class="card text-dark bg-light mb-3 bg-opacity-90" style={{ width: 350}}>{freeCompany.comments.map((c, index) => (
                             <div class="card-body"  key={index}>
                             <div class="card-header">Application</div>
@@ -66,8 +64,6 @@ function FreeCompanyDetailPage(props) {
                                     </div>
                             ))} 
                         </div>
-                            </div>
-                            </div>
                             
       
             <h1>Apply Here!</h1>
