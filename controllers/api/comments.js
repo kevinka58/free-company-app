@@ -1,4 +1,5 @@
 const FreeCompany = require("../../models/freeCompany");
+const { patch } = require("../../routes/api/freeCompanies");
 
 module.exports = {
   create,
@@ -14,14 +15,15 @@ async function create(req, res) {
 }
 
 async function update(req, res) {
-  const updatedFreeCompany = await FreeCompany.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    {
-      new: true,
-    }
-  );
-  res.status(200).json(updatedFreeCompany);
+  const freeCompany = await FreeCompany.findById(req.params.id)
+  const originalComment = freeCompany.comments.find((comment) => {
+    return req.params.commentId == comment._id
+  })
+  const index = freeCompany.comments.indexOf(originalComment)
+  const updatedComment = freeCompany.comments.create(req.body)
+  freeCompany.comments.splice(index, 1, updatedComment)
+  await freeCompany.save();
+  res.status(200).json(freeCompany);
 }
 
 async function deleteComment(req, res) {

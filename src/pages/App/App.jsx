@@ -11,6 +11,7 @@ import * as freeCompanyAPI from '../../utilities/freeCompanies-api'
 import * as commentAPI from '../../utilities/comments-api'
 import FreeCompanyDetailPage from '../../pages/FreeCompanyDetailPage/FreeCompanyDetailPage'
 import EditFreeCompany from '../../pages/EditFreeCompanyPage/EditFreeCompanyPage';
+import EditCommentPage from '../../pages/EditCommentPage/EditCommentPage';
 
 export default function App() {
 	const [user, setUser] = useState(getUser());
@@ -58,6 +59,13 @@ export default function App() {
 		   )
 		   setFreeCompanies(newFreeCompaniesArray);
 	}
+	async function handleUpdateComment (freeCompany, comment){
+		const updatedComment = await commentAPI.updateComment(freeCompany, comment)
+		// const newFreeCompaniesArray = freeCompanies.map(f =>
+		//    f._id === updatedFreeCompany._id ? updatedFreeCompany : f
+		   
+		   setFreeCompanies(updatedComment);
+	}
 
 	return (
 		<main className='App'>
@@ -85,6 +93,9 @@ export default function App() {
 						</Route>
 						<Route exact path="/edit">
 							<EditFreeCompany handleUpdateFreeCompany={handleUpdateFreeCompany}/>
+						</Route>
+						<Route exact path="/editcomment">
+							<EditCommentPage handleUpdateComment={handleUpdateComment}/>
 						</Route>
 						<Redirect to='/freeCompanies' />
 					</Switch>

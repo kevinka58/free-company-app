@@ -1,5 +1,5 @@
 import React, {Component, useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import FreeCompanyCard from '../../components/FreeCompanyCard/FreeCompanyCard';
 
 function FreeCompanyDetailPage(props) {
@@ -49,7 +49,19 @@ function FreeCompanyDetailPage(props) {
                     </thead>
                     <tbody>
                         <tr>{freeCompany.comments.map((c, index) => (
-                            <td key={index}><strong>Character Name: </strong>{c.characterName} | <strong>Character Level: </strong>{c.charLevel} | <strong>Prefered Role: </strong>{c.prefRole} | <strong>About You!: </strong>{c.content} <button onClick={() => props.handleDeleteComment(freeCompany._id, c._id)} >DELETE</button></td>
+                            <td key={index}><strong>Character Name: </strong>{c.characterName} | <strong>Character Level: </strong>{c.charLevel} | <strong>Prefered Role: </strong>{c.prefRole} | <strong>About You!: </strong>{c.content} 
+                            <Link className='btn btn-xs btn-info'
+                             to={{
+                                pathname: '/editcomment',
+                                state: {comment, freeCompany},
+                                 }}
+                                >
+                                    Edit
+                            </Link> 
+                                    <button 
+                                    onClick={() => props.handleDeleteComment(freeCompany._id, c._id)} >DELETE
+                                    </button>
+                                    </td>
                             ))} 
                         </tr>
                     </tbody>

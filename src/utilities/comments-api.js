@@ -15,8 +15,8 @@ export function create(newCommentData, freeCompanyId){
 	
 }
 
-export function update(updatedPuppy){
-	return sendRequest(`${BASE_URL}/${updatedPuppy._id}`, 'PUT', updatedPuppy)
+export function updateComment(freeCompany, comment){
+	return sendRequest(`${BASE_URL}/freeCompanies/${freeCompany[0]._id}/comments/${comment._id}`, 'PUT', comment)
 }
 
 export function deleteComment(freeCompanyId, commentId){
