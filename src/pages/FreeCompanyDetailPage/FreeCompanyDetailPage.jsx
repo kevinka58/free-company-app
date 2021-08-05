@@ -6,7 +6,7 @@ function FreeCompanyDetailPage(props) {
     const [invalidForm, setValidForm] = useState(true)
     const [formData, setFormData] = useState({
         content: '',
-        characterName: '',
+        characterName: 'First - Surname',
         charLevel: "0",
         prefRole: 'Tank',
     });
@@ -41,57 +41,60 @@ function FreeCompanyDetailPage(props) {
 			<FreeCompanyCard freeCompany={freeCompany} key={freeCompany._id} />
             <div className="FreeCompanyListing">
                 </div>
-                <table id="comment-section" class="table table-hover table-dark">
-                    <thead>
-                        <tr>
-                            <th>Applications</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>{freeCompany.comments.map((c, index) => (
-                            <td key={index}><strong>Character Name: </strong>{c.characterName} | <strong>Character Level: </strong>{c.charLevel} | <strong>Prefered Role: </strong>{c.prefRole} | <strong>About You!: </strong>{c.content} 
-                            <Link className='btn btn-xs btn-info'
+                    <div>
+                    <div>
+                    <div></div>
+                        <div class="card text-dark bg-light mb-3 bg-opacity-90" style={{ width: 350}}>{freeCompany.comments.map((c, index) => (
+                            <div class="card-body"  key={index}>
+                            <div class="card-header">Application</div>
+                            <div class="list-group-item"><strong>Character Name: </strong>{c.characterName}</div>
+                            <div class="list-group-item"><strong>Character Level: </strong>{c.charLevel}</div>
+                            <div class="list-group-item"><strong>Prefered Role: </strong>{c.prefRole}</div>
+                            <div class="list-group-item"><strong>About You!: </strong>{c.content}</div>
+                            &nbsp;
+                            <Link className='btn btn-outline-info'
                              to={{
-                                pathname: '/editcomment',
-                                state: {comment, freeCompany},
-                                 }}
+                                 pathname: '/editcomment',
+                                 state: {comment, freeCompany},
+                                }}
                                 >
                                     Edit
                             </Link> 
-                                    <button 
+                                    <button class="btn btn-outline-info"
                                     onClick={() => props.handleDeleteComment(freeCompany._id, c._id)} >DELETE
                                     </button>
-                                    </td>
+                                    </div>
                             ))} 
-                        </tr>
-                    </tbody>
-                </table>
-           
+                        </div>
+                            </div>
+                            </div>
+                            
+      
             <h1>Apply Here!</h1>
-            <form ref={formRef} onSubmit={handleSubmit}>
-            <div className="form-group">
+            <form  ref={formRef} onSubmit={handleSubmit}>
+            <div class="form-group">
                 <label>Character Name:</label>
                 <input 
-                className="form-control"
+                class="form-control"
                 name="characterName"
                 value={formData.characterName}
                 onChange={handleChange}
                 required
                 />
             </div>
-            <div className="form-group">
+            <div class="form-group">
                 <label>Character (Preffered Job) Level: </label>
-                <input className="form-control"
+                <input class="form-control"
                 name="charLevel"
                 value={formData.charLevel}
                 onChange={handleChange}
                 required
                 />
             </div>
-            <div className="form-group">
+            <div class="form-group">
                 <label>Preffered Role: </label>
                 <select
-                className="form-control"
+                class="form-control"
                 name="prefRole"
                 value={formData.prefRole}
                 onChange={handleChange}
@@ -102,9 +105,9 @@ function FreeCompanyDetailPage(props) {
                 <option value="Damage (DPS)">Damage (DPS)</option>
                 </select>
             </div>
-            <div className="form-group">
+            <div class="form-group">
                 <label>About you!</label>
-                <input className="form-control"
+                <input class="form-control"
                 name="content"
                 value={formData.content}
                 onChange={handleChange}
@@ -112,7 +115,7 @@ function FreeCompanyDetailPage(props) {
                 />
             </div>
             <button type="submit"
-            className="btn"
+            class="btn btn-success"
             disabled={invalidForm}
             >
             ADD APPLICATION
