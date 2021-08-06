@@ -10,7 +10,10 @@ FC Board allows users to search and post Free Company listings that exist within
 * CSS
 
 # Screenshots
-
+![HomePage](fc1.jpg)
+![ListingPage](fc2.jgp)
+![ApplicationPage](fc3.jpg)
+![AddListingPage](fc4.jpg)
 
 # Getting Started
 
