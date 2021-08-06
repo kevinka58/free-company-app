@@ -3,7 +3,7 @@
   --tan-1: #FBF9F6;
   --tan-2: #E7E2DD;
   --tan-3: #E2D9D1;
-  --tan-4: #D3C1AE;
+  --tan-4: #EBEBEB;
   --orange: #F67F00;
   --text-light: #968c84;
   --text-dark: #615954;
@@ -14,15 +14,24 @@
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
+  margin: 40;
+  font-family: 'Libre Franklin', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--tan-4);
-  padding: 2vmin;
+  padding: 3vmin;
   height: 100vh;
+}
+
+body > nav{
+  grid-area: nav;
+  background-color: #091540;
+  border-style: solid;
+  border-color: #3D518C;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 20px 0 30px
 }
 
 code {
@@ -119,7 +128,7 @@ input:focus {
 button, a.button {
   margin: 1vmin;
   padding: 1vmin;
-  color: var(--white);
+  color: #3D518C;
   background-color: var(--orange);
   font-size: 2vmin;
   font-weight: bold;

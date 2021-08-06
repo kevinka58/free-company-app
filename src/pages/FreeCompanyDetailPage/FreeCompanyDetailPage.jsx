@@ -1,7 +1,7 @@
 import React, {Component, useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import FreeCompanyCard from '../../components/FreeCompanyCard/FreeCompanyCard';
-
+import './FreeCompanyDetailPage.css'
 function FreeCompanyDetailPage(props) {
     const [invalidForm, setValidForm] = useState(true)
     const [formData, setFormData] = useState({
@@ -37,20 +37,18 @@ function FreeCompanyDetailPage(props) {
 
 	return (
 		<>
-			<h1>Free Company Details</h1>
+			<h1 class="titleContainer"><span class="titleColor">Free</span> Company Details</h1>
 			<FreeCompanyCard freeCompany={freeCompany} key={freeCompany._id} />
-            <div className="FreeCompanyListing">
-                </div>
 
-                        <div class="card text-dark bg-light mb-3 bg-opacity-90" style={{ width: 350}}>{freeCompany.comments.map((c, index) => (
-                            <div class="card-body"  key={index}>
+                      <div class="card text-dark bg-light mb-3 bg-opacity-90" style={cardStyle.container}>{freeCompany.comments.map((c, index) => ( 
+                         <div class="card-body"  key={index}>
                             <div class="card-header">Application</div>
                             <div class="list-group-item"><strong>Character Name: </strong>{c.characterName}</div>
                             <div class="list-group-item"><strong>Character Level: </strong>{c.charLevel}</div>
                             <div class="list-group-item"><strong>Prefered Role: </strong>{c.prefRole}</div>
                             <div class="list-group-item"><strong>About You!: </strong>{c.content}</div>
                             &nbsp;
-                            <Link className='btn btn-outline-info'
+                            <Link className='btn btn-outline-info' 
                              to={{
                                  pathname: '/editcomment',
                                  state: {comment, freeCompany},
@@ -63,8 +61,8 @@ function FreeCompanyDetailPage(props) {
                                     </button>
                                     </div>
                             ))} 
-                        </div>
-                            
+                            </div>
+                             
       
             <h1>Apply Here!</h1>
             <form  ref={formRef} onSubmit={handleSubmit}>
@@ -119,6 +117,13 @@ function FreeCompanyDetailPage(props) {
         </form>   
         </>
 	);
+}
+
+const cardStyle = {
+    container: {
+        display: "flex",
+        width: 350
+    }
 }
 
 export default FreeCompanyDetailPage;

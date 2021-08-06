@@ -1,11 +1,11 @@
-
+import './HomePage.css'
 
 function HomePage() {
 
     return (
         <>
-        <h1>This is the HomePage</h1>
-        <div>Hellooooo</div>
+        <h1 class="titleContainer"><span class="titleColor">FC</span> Board</h1>
+        <div class="sideSection"><span class="lightText">MESSAGE OF THE DAY</span></div>
         </>
     )
 }

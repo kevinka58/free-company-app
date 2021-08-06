@@ -10,6 +10,17 @@ export function getById(id) {
 	return sendRequest(`${BASE_URL}/${id}`);
 }
 
+export function create(freeCompany) {
+	return sendRequest(BASE_URL,'POST', freeCompany);
+}
+
+export function update(updatedFreeCompany){
+	return sendRequest(`${BASE_URL}/${updatedFreeCompany._id}`, 'PUT', updatedFreeCompany)
+}
+
+export function deleteOne(id){
+	return sendRequest(`${BASE_URL}/${id}`, 'DELETE')
+}
 
 async function sendRequest(url, method = 'GET', payload = null) {
 	const options = { method };
@@ -26,17 +37,4 @@ async function sendRequest(url, method = 'GET', payload = null) {
 	const res = await fetch(url, options);
 	if (res.ok) return res.json();
 	throw new Error('Bad Request');
-}
-
-export function create(freeCompany) {
-return sendRequest(BASE_URL,'POST', freeCompany);
-}
-
-
-export function update(updatedFreeCompany){
-	return sendRequest(`${BASE_URL}/${updatedFreeCompany._id}`, 'PUT', updatedFreeCompany)
-}
-
-export function deleteOne(id){
-	return sendRequest(`${BASE_URL}/${id}`, 'DELETE')
 }

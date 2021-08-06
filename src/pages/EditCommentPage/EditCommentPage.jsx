@@ -1,5 +1,6 @@
 import React, {Component, useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom'
+import './EditCommentPage'
 
 function EditCommentPage(props){
     const location = useLocation();
@@ -29,7 +30,7 @@ function EditCommentPage(props){
 
     return(
         <>
-        <h1>Edit your listing</h1>
+        <h1 class="titleContainer"> <span class="titleColor">Edit</span> your Application</h1>
         <form ref={formRef} onSubmit={handleSubmit}>
             <div className="form-group">
                 <label>Character Name:</label>
@@ -74,7 +75,7 @@ function EditCommentPage(props){
                 />
             </div>
             <button type="submit"
-            className="btn"
+            className="btn btn-outline-success"
             disabled={invalidForm}
             >
             UPDATE FREE COMPANY

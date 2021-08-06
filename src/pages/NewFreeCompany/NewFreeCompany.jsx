@@ -35,7 +35,7 @@ function NewFreeCompany(props){
 
     return(
         <>
-        <h1>Add your Free Company Listing</h1>
+        <h1 class="titleContainer"><span class="titleColor">Add</span> your Free Company Listing</h1>
         <form ref={formRef} onSubmit={handleSubmit}>
             <div className="form-group">
                 <label>Free Company's Name:</label>
@@ -133,7 +133,7 @@ function NewFreeCompany(props){
 					/>
 			</div>
             <button type="submit"
-            className="btn"
+            className="btn btn-success"
             disabled={invalidForm}
             >
             ADD FREE COMPANY

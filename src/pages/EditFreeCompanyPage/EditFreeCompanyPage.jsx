@@ -1,5 +1,6 @@
 import React, {Component, useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom'
+import './EditFreeCompanyPage.css'
 
 function EditFreeCompany(props){
     const location = useLocation();
@@ -28,7 +29,7 @@ function EditFreeCompany(props){
 
     return(
         <>
-        <h1>Edit your listing</h1>
+        <h1 class="titleContainer"><span class="titleColor">Edit</span> your Listing</h1>
         <form ref={formRef} onSubmit={handleSubmit}>
             <div className="form-group">
                 <label>Free Company's Name:</label>
@@ -126,13 +127,13 @@ function EditFreeCompany(props){
                 />
             </div>
             <button type="submit"
-            className="btn"
+            class="btn btn-outline-success"
             disabled={invalidForm}
             >
             UPDATE FREE COMPANY
             </button>
             &nbsp;&nbsp;
-            <Link to='freeCompanies/listing'>CANCEL</Link>
+            <Link  to='freeCompanies/listing'>CANCEL</Link>
         </form> 
         </>
         )  
