@@ -11,7 +11,7 @@ FC Board allows users to search and post Free Company listings that exist within
 
 # Screenshots
 ![HomePage](fc1.jpg)
-![ListingPage](fc2.jgp)
+![ListingPage](fc2.jpg)
 ![ApplicationPage](fc3.jpg)
 ![AddListingPage](fc4.jpg)
 
