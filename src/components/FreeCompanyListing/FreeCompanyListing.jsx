@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 export default function FreeCompanyListing({ freeCompany, handleDeleteFreeCompany }) {
     return (
-        <div class="card text-white bg-primary mb-3 bg-opacity-90" style={{ width: 350}}>
+        <div class="text-white bg-primary mb-3 bg-opacity-90" style={{ width: 350}}>
             <div class="card-header">
                 <h3>FREE COMPANY</h3>
             </div>
-        <div class='card-body'>
+        <div class='card-body' >
             <div>FREE COMPANY NAME: {freeCompany.companyName}</div> 
             <div>Company Tag: -{freeCompany.companyTag}-</div>
             <div>SERVER NAME: {freeCompany.serverName}</div>
